@@ -1,0 +1,2 @@
+# Matriz2d
+Implementação de uma estrutura chamada Mat2d (Matriz2d), que é uma Matriz de duas dimensões. No caso essa estrutura é possível se utilizar em C nativo, sem necessidade de inclusão de alguma biblioteca. Essa estrutura foi implementada para caso de estudo, na estrutura em questão a Matriz é manipulada como se fosse um vetor (na verdade no fundo é assim que a Linguagem C implementa a Matriz), porém para o usuário aquela Matriz possui linha e colunas, apenas nas funções da estrutura que a Matriz é tratada como vetor.

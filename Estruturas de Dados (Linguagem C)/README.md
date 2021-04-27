@@ -1,0 +1,5 @@
+# Estruturas de Dados (Linguagem C)
+Para fins de estudos, implementei várias estruturas de dados na linguagem C, optei por essa linguagem, pois C não possui tais estruturas de forma nativa. 
+As estruturas foram implementadas para manipularem um tipo de dado chamado "Aluno" que também é uma estrutura criada por mim, porém é possível modificar essas estruturas para que manipulem outros tipos, como um inteiro, uma string, etc. 
+As estruturas implementadas foram: Lista Encadeada, Lista Duplamente Encadeada, Lista Circular, Fila (Queue), Pilha (Stack) e uma estrutura que manipula uma Matriz de 2 dimensões como se fosse um vetor.
+As estruturas foram implementadas da seguinte forma: em cada pasta existe um arquivo .h que é por meio deste que é possível implementar as estruturas em qualquer programa da linguagem C como se fosse uma biblioteca; existe também um arquivo Makefile para caso se deseje compilar via terminal; existem os arquivos .c onde se localizam as estruturas e suas funções; e uma pequena descrição sobre cada estrutura e como a mesma foi implementada.

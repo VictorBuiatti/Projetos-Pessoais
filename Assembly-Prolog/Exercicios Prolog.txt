@@ -1,0 +1,151 @@
+% 1:
+% Versão sem acumulador: 
+fat(0,1):-!.
+fat(1,1):-!.
+fat(X,R):-
+    X1 is X - 1,
+    fat(X1,R1),
+    R is X * R1.
+
+% Versão com acumulador:
+fatorialAcum(0,1,1):-!.
+fatorialAcum(1,Acum,Acum):-!.
+fatorialAcum(N,Acum,Result):-
+    NewAcum is Acum * N,
+    N1 is N-1,
+    fatorialAcum(N1,NewAcum,Result).
+
+% Fachada:
+fatorial(N,R):-fatorialAcum(N,1,R).
+
+% 2:
+% Sem acumulador:
+multiplica(A,1,A):-!.
+multiplica(A,B,Result):-
+    B1 is B-1,
+    multiplica(A,B1,R1),
+    Result is A + R1.
+
+% Com acumulador:
+mult(_,0,Acum,Acum):-!.
+mult(A,B,Acum,R):-
+    NewAcum is A + Acum,
+    B1 is B-1,
+    mult(A,B1,NewAcum,R).
+
+% Fachada:
+multiplica2(A,B,R):-mult(A,B,0,R).
+
+% 3:
+% Sem acumulador:
+conta_ocorrencia([],_,0):-!.
+conta_ocorrencia([Head|Tail],N,R):-
+   Head == N, conta_ocorrencia(Tail,N,R1),
+    R is R1+1, !.
+conta_ocorrencia([_|Tail],N,R) :- conta_ocorrencia(Tail,N,R).
+
+% Com acumulador:
+cont([],_,R,R):-!.
+cont([Head|Tail],N,Acum,Result):-
+    Head == N,
+    NewAcum is Acum+1,
+    cont(Tail,N,NewAcum,Result), !.
+cont([_|Tail],N,Acum,Result):-cont(Tail,N,Acum,Result).
+
+% Fachada:
+contador(L,N,R):-cont(L,N,0,R).
+
+% 4:
+% Sem acumulador:
+comprimento([],0):-!.
+comprimento([_|Tail],R):-
+    comprimento(Tail,R2),
+    R is R2+1.
+
+% Com acumulador:
+comp([],Acum,Acum):-!.
+comp([_|Tail],Acum,R):-
+    NewAcum is Acum+1,
+    comp(Tail,NewAcum,R).
+
+% Fachada:
+compriment(L,R):-comp(L,0,R).
+
+% 5:
+% Sem acumulador:
+	fibonacci(0, 0):- !.
+	fibonacci(1, 1):- !.
+	fibonacci(X, Y) :-
+	  X > 1,
+	  X2 is X - 2, fibonacci(X2, Y2),
+	  X1 is X - 1, fibonacci(X1, Y1),
+	  Y is Y1 + Y2.
+
+% Com acumulador:
+fib(0, A1, _, A1) :- !.
+fib(N, AC1, AC2, F) :-
+	N1 is AC1+AC2, 
+	A1 is N-1,
+	fib(A1, AC2, N1, F).
+
+% Fachada:
+fib2(A, F) :- fib(A, 0, 1, F). 
+
+% Testes:
+
+% Teste para o 10 termo da sequência:
+% Versão sem acumulador:
+
+time(fibonacci(10,R))
+352 inferences, 0.000 CPU in 0.000 seconds (102% CPU, 2465780 Lips)
+R = 55
+
+% Versão com acumulador:
+
+time(fib2(10,R))
+21 inferences, 0.000 CPU in 0.000 seconds (137% CPU, 772258 Lips)
+R = 55
+
+% Teste para o 40 termo da sequência:
+% Versão sem acumulador:
+
+time(fibonacci(40,R))
+662,320,560 inferences, 111.541 CPU in 111.540 seconds (100% CPU, 5937933 Lips)
+R = 102334155
+
+% Versão com acumulador:
+
+time(fib2(40,R))
+81 inferences, 0.000 CPU in 0.000 seconds (99% CPU, 1360202 Lips)
+R = 102334155
+
+% Teste para o 30 termo da sequência:
+% Versão sem acumulador: 
+
+time(fibonacci(30,R))
+5,385,072 inferences, 0.909 CPU in 0.909 seconds (100% CPU, 5926835 Lips)
+R = 832040
+
+% Versão com acumulador:
+
+time(fib2(30,R))
+61 inferences, 0.000 CPU in 0.000 seconds (52% CPU, 2906423 Lips)
+R = 832040
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

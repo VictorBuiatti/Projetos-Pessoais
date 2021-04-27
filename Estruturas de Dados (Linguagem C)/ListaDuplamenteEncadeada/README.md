@@ -1,0 +1,2 @@
+# ListaDuplamenteEncadeada
+Foi implementada uma lista duplamente encadeada usando nó descritor, a diferença entre essa estrutura e uma lista simplesmente encadeada é que essa utiliza dois ponteiros, um que aponta para o elemento anterior anterior daquele consultado e um que aponta para o próximo elemento. Para caso de parada, utilizei que o elemento anterior ao primeiro elemento da lista e o próximo elemento do último dado da lista seria o elemento nulo (NULL).
